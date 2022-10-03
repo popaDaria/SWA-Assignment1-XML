@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+    <style>
+        td {
+            width: 40px;
+            height: 40px;
+            border: 1px solid black;
+        }
+
+        table {
+            border: 1px solid black;
+            border-spacing: 0;
+        }
+
+        #error_messages {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='base'>
+        <h1 style="text-align: center;">
+            <%= htmlWebpackPlugin.options.title %>
+        </h1>
+        <button onclick="location.href = '/';" id="myButton" class="btn btn-secondary mb-3">
+            See Weather
+        </button>
+        <form name="placeSelection" class="input-group">
+            <div class="input-group-text">
+                <input type="radio" name="placeRadio" id="all" value="" checked>
+                <label for="all">All</label>
+            </div>
+            <div class="input-group-text">
+                <input type="radio" name="placeRadio" id="horsens" value="Horsens">
+                <label for="horsens">Horsens</label>
+            </div>
+            <div class="input-group-text">
+                <input type="radio" name="placeRadio" id="aarhus" value="Aarhus">
+                <label for="aarhus">Aarhus</label>
+            </div>
+            <div class="input-group-text">
+                <input type="radio" name="placeRadio" id="copenhagen" value="Copenhagen">
+                <label for="copenhagen">Copenhagen</label>
+            </div>
+        </form>
+        <table id='forecast' class="table table-striped table-hover">
+            <thead>
+                <tr class="table-primary">
+                    <th>Type</th>
+                    <th>Time</th>
+                    <th>Place</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Unit</th>
+                    <th>Precipitation types</th>
+                    <th>Directions</th>
+                </tr>
+            </thead>
+            <tbody id='forecast_data'></tbody>
+        </table>
+        <p id='error_messages'>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

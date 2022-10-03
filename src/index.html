@@ -1,0 +1,116 @@
+<html lang="uk">
+
+<head>
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+    <style>
+        td {
+            width: 40px;
+            height: 40px;
+            border: 1px solid black;
+        }
+
+        table {
+            border: 1px solid black;
+            border-spacing: 0;
+        }
+
+        #error_messages {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='base'>
+        <h1 style="text-align: center;">
+            <%= htmlWebpackPlugin.options.title %>
+        </h1>
+
+        <h2>Add new weather data</h2>
+        <form id="addWeatherData" class="input-group">
+            <select name="type" id="type" class="custom-select" style="margin-right: 1rem;">
+                <option value="temperature">Temperature</option>
+                <option value="wind speed">Wind Speed</option>
+                <option value="cloud coverage">Cloud Coverage</option>
+                <option value="precipitation">Precipitation</option>
+            </select>
+            <select name="city" id="city" class="custom-select" style="margin-right: 1rem;">
+                <option value="Horsens">Horsens</option>
+                <option value="Aarhus">Aarhus</option>
+                <option value="Copenhagen">Copenhagen</option>
+            </select>
+            <select name="precipitation-type" id="precipitation-type" class="custom-select" style="margin-right: 1rem;">
+                <option value="hail">Hail</option>
+                <option value="rain">Rain</option>
+                <option value="snow">Snow</option>
+                <option value="sleet">Sleet</option>
+            </select>
+            <select name="wind-direction" id="wind-direction" class="custom-select" style="margin-right: 1rem;">
+                <option value="north">North</option>
+                <option value="south">South</option>
+                <option value="east">East</option>
+                <option value="west">West</option>
+                <option value="north-east">Northeast</option>
+                <option value="south-east">Southeast</option>
+                <option value="north-west">Northwest</option>
+                <option value="south-west">Southwest</option>
+            </select>
+            <input name="value" id="value" class="input-group-text" type="number" step=0.1>
+            <button id="formButton" class="btn btn-success">
+                Add weather measurement
+            </button>
+        </form>
+
+        <button onclick="location.href = 'forecast.html';" id="myButton" class="btn btn-secondary mb-3">
+            See Forecast
+        </button>
+
+        <form name="placeSelection" class="input-group">
+            <div class="input-group-text">
+                <input type="radio" name="placeRadio" id="horsens" value="Horsens" checked>
+                <label for="horsens">Horsens</label>
+            </div>
+            <div class="input-group-text">
+                <input type="radio" name="placeRadio" id="aarhus" value="Aarhus">
+                <label for="aarhus">Aarhus</label>
+            </div>
+            <div class="input-group-text">
+                <input type="radio" name="placeRadio" id="copenhagen" value="Copenhagen">
+                <label for="copenhagen">Copenhagen</label>
+            </div>
+        </form>
+        <h2>Information about the last day</h2>
+        <table id='functions' class="table table-bordered table-sm">
+            <thead class="thead-dark">
+                <tr class="table-info">
+                    <th scope="col">Minimum temperature</th>
+                    <th scope="col">Maximum temperature</th>
+                    <th scope="col">Total precipitation</th>
+                    <th scope="col">Average wind speed</th>
+                </tr>
+            </thead>
+            <tbody id='functions_data'></tbody>
+        </table>
+        <h2>Information about latest measurements</h2>
+        <table id='weather' class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr class="table-primary">
+                    <th>Type</th>
+                    <th>Time</th>
+                    <th>Place</th>
+                    <th>Value</th>
+                    <th>Unit</th>
+                    <th>Precipitation type</th>
+                    <th>Direction</th>
+                </tr>
+            </thead>
+            <tbody id='weather_data'></tbody>
+        </table>
+        <p id='error_messages'>
+    </div>
+    <script src="dist/main.js"></script>
+</body>
+
+</html>
