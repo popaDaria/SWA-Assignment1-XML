@@ -2,6 +2,8 @@ import model from './model.js'
 import { WeatherMeasurement } from './model.js'
 import view from './view.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {show} from 'js-snackbar';
+require('../node_modules/js-snackbar/snackbar.css');
 
 function display(theView, weather = []) {
     const theModel = model(weather)
@@ -59,6 +61,11 @@ async function postData() {
         unit = '%'
     }
     const value = document.getElementById('value').value;
+    if (value === '')
+    {
+        show({text: 'Value needs to be entered'});
+        return;
+    }
     const weather = WeatherMeasurement(type, unit, new Date(), city, value, precipitationType, windDirection)
     let jsonString = '';
     if (windDirection) {
@@ -72,8 +79,8 @@ async function postData() {
     const xhr = new XMLHttpRequest()
     xhr.open('POST', 'http://localhost:8080/data/')
     xhr.onload = () => {
-        const body = xhr.responseText
-        console.log(body)
+        show({text: 'Measurement added'});
+        getData(radioSelection.value)
     }
     xhr.onerror = () => {
         theView.displayError(xhr.responseText)
